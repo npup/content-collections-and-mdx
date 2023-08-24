@@ -6,6 +6,6 @@ const page = await getEntry("pages", "home");
 const { Content } = await page.render();
 ---
 
-<Layout title="Home page">
+<Layout title="Home page" editDate={page.data.editDate}>
     <Content />
 </Layout>
