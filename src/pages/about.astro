@@ -1,0 +1,11 @@
+---
+import { getEntry } from "astro:content";
+import Layout from "../layouts/Layout.astro";
+
+const page = await getEntry("pages", "about");
+const { Content } = await page.render();
+---
+
+<Layout title="About page">
+    <Content />
+</Layout>
