@@ -1,9 +1,11 @@
 ---
+import "css-to-go";
 interface Props {
     title: string;
+    editDate: Date;
 }
 
-const { title } = Astro.props;
+const { title, editDate } = Astro.props;
 ---
 
 <!DOCTYPE html>
@@ -14,7 +16,7 @@ const { title } = Astro.props;
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <title>{title}</title>
     </head>
-    <body>
+    <body class="ctg-root ctg-container ctg-theme--light">
         <header>
             <h1>Reproduction</h1>
             <nav>
@@ -24,6 +26,20 @@ const { title } = Astro.props;
         </header>
         <main>
             <slot />
+            <footer>
+                <time datetime={editDate.toISOString()}>
+                    Latest edit: {editDate.toISOString().replace(/T.+$/, "")}
+                </time>
+            </footer>
         </main>
     </body>
 </html>
+
+<style>
+    footer {
+        border-top: 1px solid #222;
+        margin-top: 2rem;
+        padding-top: 2rem;
+        text-align: center;
+    }
+</style>
